@@ -37,8 +37,13 @@ Z
 
 ## 5. Create a vector with values ranging from 10 to 99
 
+pre-1.0
 ```jl
 Z = [10:99]
+```
+1.0+
+```jl
+Z = collect(10:99)
 ```
 
 ## 6. Create a 3x3 matrix with values ranging from 0 to 8
@@ -49,8 +54,13 @@ Z = reshape(0:8, 3, 3)
 
 ## 7. Find indices of non-zero elements from [1,2,0,0,4,0]
 
+pre-1.0
 ```jl
 nz = find([1,2,0,0,4,0])
+```
+1.0+
+```jl
+nz = findall(x->x>0,[1,2,0,0,4,0])
 ```
 
 ## 8. Create a 3x3 identity matrix
