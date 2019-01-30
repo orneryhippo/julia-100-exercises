@@ -203,8 +203,6 @@ m = mean(Z)
 ```
 
 
-==editpoint
-
 # Apprentice
 ## 1. Make an array immutable (read-only)
 
@@ -233,10 +231,12 @@ T = atan2(Y,X)
 
 ```jl
 Z = rand(100)
-Z[indmax(Z)] = 0
+Z[findmax(Z)] = 0
 ```
 
 ## 4. Create a structured array with x and y coordinates covering the [0,1]x[0,1] area.
+
+# note: linspace is deprecated/gone. replace with range(0,stop=1,length=10) instead for examples below
 
 ```jl
 # There is no official `meshgrid` function.
@@ -250,6 +250,7 @@ Zx, Zy = meshgrid(X, X)
 # Author: Alireza Nejati
 [(x,y) for x in linspace(0,1,10), y in linspace(0,1,10)]
 ```
+# replace linspace with range
 
 ## 5. Print the minimum and maximum representable value for each Julia scalar type
 
