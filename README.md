@@ -60,7 +60,7 @@ nz = find([1,2,0,0,4,0])
 ```
 1.0+
 ```jl
-nz = findall(x->x>0,[1,2,0,0,4,0])
+nz = findall(x -> x > 0, [1,2,0,0,4,0])
 ```
 
 ## 8. Create a 3x3 identity matrix
@@ -71,8 +71,18 @@ Z = eye(3)
 
 ## 9. Create a 5x5 matrix with values 1,2,3,4 just below the diagonal
 
+pre-1.0
 ```jl
 Z = diagm(1:4, -1)
+```
+1.0+
+```jl
+# (may already be imported/using but it lives in LinearAlgebra module)
+# using LinearAlgebra: diagm
+# or 
+# import LinearAlgebra.diagm 
+
+Z = diagm(-1 => collect(1:4))
 ```
 
 ## 10. Create a 10x10x10 array with random values
