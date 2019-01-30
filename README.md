@@ -206,11 +206,27 @@ m = mean(Z)
 # Apprentice
 ## 1. Make an array immutable (read-only)
 
+# ImmutableArrays is deprecated/gone for 1.0+
+pre-1.0
 ```jl
 julia> Pkg.add("ImmutableArrays")
 julia> using ImmutableArrays
 julia> Matrix4x4(rand(4,4))
 4x4 ImmutableArrays.Matrix4x4{Float64}:
+ 0.0724154  0.0840244  0.291123  0.853076
+ 0.0994344  0.686174   0.214841  0.248117
+ 0.996963   0.680124   0.405399  0.180246
+ 0.232086   0.0424678  0.375087  0.799278
+
+```
+1.0+
+# using StaticArrays instead
+
+```jl
+julia> Pkg.add("StaticArrays")
+julia> using StaticArrays
+julia> SMatrix{4,4}(rand(4,4))
+4x4 SArray{Tupel{4,4},Float64,2,16}:
  0.0724154  0.0840244  0.291123  0.853076
  0.0994344  0.686174   0.214841  0.248117
  0.996963   0.680124   0.405399  0.180246
@@ -251,6 +267,11 @@ Zx, Zy = meshgrid(X, X)
 [(x,y) for x in linspace(0,1,10), y in linspace(0,1,10)]
 ```
 # replace linspace with range
+```jl
+...
+[(x,y) for x in range(0, stop=1, length=10), y in range(0, stop=1, length=10)]
+```
+
 
 ## 5. Print the minimum and maximum representable value for each Julia scalar type
 
@@ -291,6 +312,8 @@ D = sqrt((X.-X').^2 + (Y .- Y').^2)
 
 ## 8. Generate a generic 2D Gaussian-like array
 
+# linspace is replaced by range(-1,stop=1,length=100)
+
 ```jl
 X, Y = meshgrid(linspace(-1,1,100),linspace(-1,1,100))
 D = sqrtm(X*X + Y*Y)
@@ -326,7 +349,7 @@ Z0[1:nz+1:end] = Z
 
 ```jl
 Z = [3,6,9,12,15]
-Z[indmin(abs(Z .- 10))]
+Z[findmin(abs(Z .- 10))]
 ```
 
 # Journeyman
