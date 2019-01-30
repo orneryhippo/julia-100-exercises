@@ -119,10 +119,18 @@ Zmin, Zmax = extrema(Z)
 
 ## 3. Create a checkerboard 8x8 matrix using the tile function
 
+pre-1.0
 ```jl
 # numpy's tile equal to repmat
 Z = repmat([0 1;1 0],4,4)
 ```
+1.0+
+```jl
+# changed repmat -> repeat
+# numpy's tile equal to repeat
+Z = repeat([0 1;1 0],4,4)
+```
+
 
 ## 4. Normalize a 5x5 random matrix (between 0 and 1)
 
@@ -150,8 +158,13 @@ Z = ones(5,3) * ones(3,2)
 
 ## 7. Create a vector of size 1000 with values ranging from 0 to 1, both excluded
 
+pre-1.0
 ```jl
 linspace(0,1, 1002)[2:end - 1]
+```
+1.0+
+```jl
+collect(range(0,stop=1,length=1000))
 ```
 
 ## 8. Create a random vector of size 100 and sort it
@@ -176,10 +189,21 @@ A == B
 
 ## 10. Create a random vector of size 1000 and find the mean value
 
+pre-1.0
 ```jl
 Z = rand(1000)
 m = mean(Z)
 ```
+
+1.0+
+```jl
+using Statistics
+Z = rand(1000)
+m = mean(Z)
+```
+
+
+==editpoint
 
 # Apprentice
 ## 1. Make an array immutable (read-only)
