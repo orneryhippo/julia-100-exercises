@@ -1,4 +1,4 @@
-100 Julia exercises
+100 Julia exercises * updating for 1.*
 =============
 
 This is Julia version of [100 numpy exercises](http://www.loria.fr/~rougier/teaching/numpy.100/)
